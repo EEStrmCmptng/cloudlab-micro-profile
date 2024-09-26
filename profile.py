@@ -68,7 +68,7 @@ node1.hardware_type = params.phystype
 node1_bs = node1.Blockstore("bs", params.mountpoint)
 node1_bs.dataset = params.dataset
 iface1 = node1.addInterface()
-iface1.addAddress(rspec.IPv4Address("10.10.1.1", "255.255.255.0"))
+iface1.addAddress(pg.IPv4Address("10.10.1.1", "255.255.255.0"))
 lan.addInterface(iface1)
     
 # Source node
@@ -76,7 +76,7 @@ node2 = request.RawPC("Source10-2")
 node2.disk_image = ubuntu_image
 node2.hardware_type = params.phystype
 iface2 = node2.addInterface()
-iface2.addAddress(rspec.IPv4Address("10.10.1.2", "255.255.255.0"))
+iface2.addAddress(pg.IPv4Address("10.10.1.2", "255.255.255.0"))
 lan.addInterface(iface2)
 
 # Install and execute a script that is contained in the repository.
