@@ -65,7 +65,7 @@ if params.sameSwitch:
 node1 = request.RawPC("JobManager10-1")
 node1.disk_image = ubuntu_image
 node1.hardware_type = params.phystype
-node1_bs = node1.Blockstore("bs", params.mountpoint)
+node1_bs = node1.Blockstore("bs1", params.mountpoint)
 node1_bs.dataset = params.dataset
 iface1 = node1.addInterface()
 iface1.addAddress(pg.IPv4Address("10.10.1.1", "255.255.255.0"))
@@ -75,7 +75,7 @@ lan.addInterface(iface1)
 node2 = request.RawPC("Source10-2")
 node2.disk_image = ubuntu_image
 node2.hardware_type = params.phystype
-node2_bs = node2.Blockstore("bs", params.mountpoint)
+node2_bs = node2.Blockstore("bs2", params.mountpoint)
 node2_bs.dataset = params.dataset
 iface2 = node2.addInterface()
 iface2.addAddress(pg.IPv4Address("10.10.1.2", "255.255.255.0"))
@@ -85,7 +85,7 @@ lan.addInterface(iface2)
 node3 = request.RawPC("Mapper10-3")
 node3.disk_image = ubuntu_image
 node3.hardware_type = params.phystype
-node3_bs = node3.Blockstore("bs", params.mountpoint)
+node3_bs = node3.Blockstore("bs3", params.mountpoint)
 node3_bs.dataset = params.dataset
 iface3 = node3.addInterface()
 iface3.addAddress(pg.IPv4Address("10.10.1.3", "255.255.255.0"))
@@ -95,7 +95,7 @@ lan.addInterface(iface3)
 node4 = request.RawPC("Sink10-4")
 node4.disk_image = ubuntu_image
 node4.hardware_type = params.phystype
-node4_bs = node4.Blockstore("bs", params.mountpoint)
+node4_bs = node4.Blockstore("bs4", params.mountpoint)
 node4_bs.dataset = params.dataset
 iface4 = node4.addInterface()
 iface4.addAddress(pg.IPv4Address("10.10.1.4", "255.255.255.0"))
