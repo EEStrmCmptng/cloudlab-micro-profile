@@ -75,12 +75,34 @@ lan.addInterface(iface1)
 node2 = request.RawPC("Source10-2")
 node2.disk_image = ubuntu_image
 node2.hardware_type = params.phystype
+node2_bs = node2.Blockstore("bs", params.mountpoint)
+node2_bs.dataset = params.dataset
 iface2 = node2.addInterface()
 iface2.addAddress(pg.IPv4Address("10.10.1.2", "255.255.255.0"))
 lan.addInterface(iface2)
 
-# Install and execute a script that is contained in the repository.
-#node1.addService(pg.Execute(shell="bash", command="/local/repository/silly.sh"))
+# Mapper node
+node3 = request.RawPC("Mapper10-3")
+node3.disk_image = ubuntu_image
+node3.hardware_type = params.phystype
+node3_bs = node3.Blockstore("bs", params.mountpoint)
+node3_bs.dataset = params.dataset
+iface3 = node3.addInterface()
+iface3.addAddress(pg.IPv4Address("10.10.1.3", "255.255.255.0"))
+lan.addInterface(iface3)
+
+# Mapper node
+node4 = request.RawPC("Sink10-4")
+node4.disk_image = ubuntu_image
+node4.hardware_type = params.phystype
+node4_bs = node4.Blockstore("bs", params.mountpoint)
+node4_bs.dataset = params.dataset
+iface4 = node4.addInterface()
+iface4.addAddress(pg.IPv4Address("10.10.1.4", "255.255.255.0"))
+lan.addInterface(iface4)
+
+for node in [node1, node2, node3, node4]:
+    node.addService(pg.Execute(shell="bash", command="/local/repository/setup.sh"))
 
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
