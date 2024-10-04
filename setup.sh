@@ -116,3 +116,4 @@ sudo setcap cap_sys_rawio=ep /usr/sbin/rdmsr
 sudo setcap cap_sys_rawio=ep /usr/sbin/wrmsr
 sudo setcap cap_net_admin+ep /usr/sbin/ethtool
 
+mv /local/repository/experiment-scripts ~/

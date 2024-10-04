@@ -101,8 +101,8 @@ iface4 = node4.addInterface()
 iface4.addAddress(pg.IPv4Address("10.10.1.4", "255.255.255.0"))
 lan.addInterface(iface4)
 
-for node in [node1, node2, node3, node4]:
-    node.addService(pg.Execute(shell="bash", command="/local/repository/setup.sh"))
+#for node in [node1, node2, node3, node4]:
+#    node.addService(pg.Execute(shell="bash", command="/local/repository/setup.sh"))
 
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
